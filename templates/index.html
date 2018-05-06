@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Test AQ</title>
+    <link rel="stylesheet" href=" static/test/css/bootstrap.min.css" type = "text/css"/>
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+
+  <style type="text/css">
+    html,
+    body {
+      height:100%
+    }
+  </style>
+
+</head>
+
+<body class = "body" style="background-color: #f6f6f4">
+  <main role="main" class="container">
+
+  <h1 class="display-1">TEST AQ</h1>
+
+  <div class="container-fluid" style="min-height:95%;">
+
+      <br>
+      <br>
+      <p class="lead"> Psycholog Simon Baron-Cohen wraz z grupa specjalistów z Cenrum Badań nad
+        Autyzmem w Cambridge (Cambridge’s Autism Research Centre) stworzyli test do
+        okreslenia czynnika AQ (Autism- Spectrum Quotient). Głównym celem tego testu
+        było ułatwienie wstepnego badania w kierunku rozpoznania zaburzeń typu
+        autystycznego, stwierdzenie poziomu cech autystycznych. Test AQ miał być
+        na tyle prosty, aby każdy był w stanie sam go na sobie przeprowadzić. Składa
+        sie z 50 pytań. Obejmuje zagadnienia z zakresu umiejetności socjalnych,
+        zdolności do łatwego przerzucania uwagi , przywiązywania uwagi do detali,
+        komunikacji i wyobraźni. Za każde pytanie przyznawany jest 1 pkt, gdy
+        odpowiedź wskazyje na występowanie cech autystycznych. Pytania były
+        formulowane tak, by połowa odpowiedzi było potwierdzających, a połowa
+        przeczących.Jeżeli twój wynik jest równy, bądź wyższy niż 32 to należy
+        się zgłosić do lekarza. Oczywiście tylko się przypuszcza że osoba może mieć
+        problam lecz aby wystawić diagnozę, potrzebna jest interwencja lekarza.
+      </p>
+      <br>
+
+      <h2>
+        {% for message in get_flashed_messages() %}
+          {{ message }}
+        {% endfor %}
+      </h2>
+      <br>
+
+      <form method="POST">
+          {% for q in questions %}
+            <p>
+              {{ q.question }}
+              <br>
+              {% set numQ = loop.index0 %}
+              {% for a in q.answers %}
+                  <input type="radio" value="{{ a }}" name="{{ numQ }}">
+                  {{ a }}
+                </br>
+              {% endfor %}
+            </p>
+          {% endfor %}
+
+          <button type="submit" class="btn btn-primary" >Sprawdź wynik</button>
+      </form>
+      <br />
+      </div>
+  </main>
+
+</body>
+</html>
